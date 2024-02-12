@@ -4,6 +4,9 @@ on: create
 permissions:
     pull-requests: write
 
+env:
+    GH_TOKEN: ${{ github.token }}
+
 jobs:
     pull-request:
         name: Open PR to main
