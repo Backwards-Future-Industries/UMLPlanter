@@ -15,4 +15,4 @@ jobs:
             - name: checkout 
               uses: actions/checkout@v3
             - name: pull-request
-              run: gh pr create --draft --base master --title "pull request ${{ github.ref }} to master"
+              run: gh pr create --draft --base master --title "pull request ${{ github.ref }} to master --fill"
