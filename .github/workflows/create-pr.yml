@@ -1,6 +1,9 @@
 name: craete pull request to new branch
 on: create
 
+permissions:
+    pull-requests: write
+
 jobs:
     pull-request:
         name: Open PR to main
@@ -9,10 +12,4 @@ jobs:
             - name: checkout 
               uses: actions/checkout@v3
             - name: pull-request
-              uses: repo-sync/pull-request@v2
-              with: 
-                destination_branch: "main"
-                pr_title: "Pulling ${{ github.ref }} into main"
-                pr_body: "*Automated PR*"
-                pr_draft: true
-                github_token: ${{ secrets.GITHUB_TOKEN }}
+              run: gh pr create --draft --base master --title "pull request ${{ github.ref }} to master"
