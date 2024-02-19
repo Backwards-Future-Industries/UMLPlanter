@@ -51,12 +51,12 @@ canvas3.place(x = 250, y = 0)
 canvas4.place(x = 990, y = 0)
 
 #buttom 1
-image_1 = PhotoImage(file="gui/assets/frame1/image_1.png")
+image_1 = PhotoImage(file="gui/assets/image_1.png")
 b = Button(canvas1, image=image_1, command=window.quit, bg = globalbackground)
 b.place(x=40, y=30)
 
 #buttom 2
-image_2 = PhotoImage(file="gui/assets/frame1/image_2.png")
+image_2 = PhotoImage(file="gui/assets/image_2.png")
 b2 = Button(canvas1, image=image_2, command=window.quit, bg = globalbackground)
 b2.place(x=40, y=250)
 
