@@ -56,7 +56,7 @@ canvas4 = Canvas(
 canvas1.place(x = 0, y = 0)
 canvas2.place(x = 0, y = 480)
 canvas3.place(x = 250, y = 0)
-canvas4.place(x = 690, y = 0)
+canvas4.place(x = 990, y = 0)
 
 image_1 = PhotoImage(
     file=relative_to_assets("image_1.png"))
