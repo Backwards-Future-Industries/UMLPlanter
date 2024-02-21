@@ -1,5 +1,8 @@
 from tkinter import Frame, Tk, Canvas, Entry, Text, Button, PhotoImage
 from canvas import canvas
+from element_selactor import element_selactor
+from properties import properties
+from dls_zone import dls_zone
 
 #global variables
 globalbackground = "#FFFFFF"
@@ -12,32 +15,10 @@ window.configure(bg = globalbackground)
 window.title("UMLPlanter")
 
 #creating and configuring the canvas
-frame1 = Frame(
-    window,
-    bg = globalbackground,
-    height = 480,
-    width = 250,
-    highlightthickness = borderthinkness,
-    relief = "ridge"
-)
-frame2 = Frame(
-    window,
-    bg = globalbackground,
-    height = 544,
-    width = 250,
-    highlightthickness = borderthinkness,
-    relief = "ridge"
-)
+frame1 = element_selactor(window, globalbackground, borderthinkness)
+frame2 = properties(window, globalbackground, borderthinkness)
 canvas = canvas(window, globalbackground, borderthinkness)
-
-frame4 = Frame(
-    window,
-    bg = globalbackground,
-    height = 1024,
-    width = 450,
-    highlightthickness = borderthinkness,
-    relief = "ridge"
-)
+frame4 = dls_zone(window, globalbackground, borderthinkness)
 
 #putting the canvas on the window
 frame1.place(x = 0, y = 0)
@@ -54,7 +35,6 @@ def place_box():
         outline = "black",
         width = 2,
         tags = "move")
-
 
 #buttom 1
 image_1 = PhotoImage(file="gui/assets/image_1.png")

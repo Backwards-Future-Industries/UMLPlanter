@@ -9,7 +9,6 @@ class canvas(Canvas):
             width = 740,
             highlightthickness = borderthinkness,
             relief = "ridge",
-
         )
         self.place(x = 250, y = 0)
 
@@ -18,6 +17,7 @@ class canvas(Canvas):
         self.tag_bind("move", "<ButtonRelease-1>", self.drag_stop)
         self.tag_bind("move", "<B1-Motion>", self.drag)
 
+    #https://stackoverflow.com/a/6789351
     def drag_start(self, event):
         """Begining drag of an object"""
         # record the item and its location
