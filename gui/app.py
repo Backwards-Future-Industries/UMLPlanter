@@ -1,4 +1,8 @@
-from tkinter import Tk, Canvas, Entry, Text, Button, PhotoImage
+from tkinter import Frame, Tk, Canvas, Entry, Text, Button, PhotoImage
+from canvas import canvas
+from element_selactor import element_selactor
+from properties import properties
+from dls_zone import dls_zone
 
 #global variables
 globalbackground = "#FFFFFF"
@@ -11,55 +15,49 @@ window.configure(bg = globalbackground)
 window.title("UMLPlanter")
 
 #creating and configuring the canvas
-canvas1 = Canvas(
-    window,
-    bg = globalbackground,
-    height = 480,
-    width = 250,
-    highlightthickness = borderthinkness,
-    relief = "ridge"
-)
-canvas2 = Canvas(
-    window,
-    bg = globalbackground,
-    height = 544,
-    width = 250,
-    highlightthickness = borderthinkness,
-    relief = "ridge"
-)
-canvas3 = Canvas(
-    window,
-    bg = globalbackground,
-    height = 1024,
-    width = 740,
-    highlightthickness = borderthinkness,
-    relief = "ridge"
-)
-canvas4 = Canvas(
-    window,
-    bg = globalbackground,
-    height = 1024,
-    width = 450,
-    highlightthickness = borderthinkness,
-    relief = "ridge"
-)
+frame1 = element_selactor(window, globalbackground, borderthinkness)
+frame2 = properties(window, globalbackground, borderthinkness)
+canvas = canvas(window, globalbackground, borderthinkness)
+frame4 = dls_zone(window, globalbackground, borderthinkness)
 
 #putting the canvas on the window
-canvas1.place(x = 0, y = 0)
-canvas2.place(x = 0, y = 480)
-canvas3.place(x = 250, y = 0)
-canvas4.place(x = 990, y = 0)
+frame1.place(x = 0, y = 0)
+frame2.place(x = 0, y = 480)
+canvas.place(x = 250, y = 0)
+frame4.place(x = 990, y = 0)
+
+#creating a box on canvas
+def place_box():
+    #creating the box
+    canvas.create_rectangle(
+        100, 100, 200, 200,
+        fill = "white",
+        outline = "black",
+        width = 2,
+        tags = "move")
+
+#creating an arrow on canvas
+def place_arrow():
+    #creating the arrow
+    canvas.create_line(
+        100, 100, 200, 200,
+        fill = "black",
+        width = 2,
+        arrow = "last",
+        tags = "move")
 
 #buttom 1
 image_1 = PhotoImage(file="gui/assets/image_1.png")
-b = Button(canvas1, image=image_1, command=window.quit, bg = globalbackground)
+b = Button(frame1, image=image_1, command=place_box, bg = globalbackground)
 b.place(x=40, y=30)
 
 #buttom 2
 image_2 = PhotoImage(file="gui/assets/image_2.png")
-b2 = Button(canvas1, image=image_2, command=window.quit, bg = globalbackground)
+b2 = Button(frame1, image=image_2, command=place_arrow, bg = globalbackground)
 b2.place(x=40, y=250)
 
+#cloes the application on escape
+window.bind('<Escape>',lambda x: window.quit())
 #start the application
 window.resizable(False, False)
 window.mainloop()
