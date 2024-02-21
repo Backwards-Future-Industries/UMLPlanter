@@ -26,7 +26,7 @@ frame2.place(x = 0, y = 480)
 canvas.place(x = 250, y = 0)
 frame4.place(x = 990, y = 0)
 
-#creating a box on canvas3
+#creating a box on canvas
 def place_box():
     #creating the box
     canvas.create_rectangle(
@@ -36,6 +36,16 @@ def place_box():
         width = 2,
         tags = "move")
 
+#creating an arrow on canvas
+def place_arrow():
+    #creating the arrow
+    canvas.create_line(
+        100, 100, 200, 200,
+        fill = "black",
+        width = 2,
+        arrow = "last",
+        tags = "move")
+
 #buttom 1
 image_1 = PhotoImage(file="gui/assets/image_1.png")
 b = Button(frame1, image=image_1, command=place_box, bg = globalbackground)
@@ -43,9 +53,11 @@ b.place(x=40, y=30)
 
 #buttom 2
 image_2 = PhotoImage(file="gui/assets/image_2.png")
-b2 = Button(frame1, image=image_2, command=window.quit, bg = globalbackground)
+b2 = Button(frame1, image=image_2, command=place_arrow, bg = globalbackground)
 b2.place(x=40, y=250)
 
+#cloes the application on escape
+window.bind('<Escape>',lambda x: window.quit())
 #start the application
 window.resizable(False, False)
 window.mainloop()
