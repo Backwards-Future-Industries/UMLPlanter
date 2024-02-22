@@ -1,24 +1,25 @@
 from tkinter import Frame, Tk, Canvas, Entry, Text, Button, PhotoImage
 from canvas import canvas
-from element_selactor import element_selactor
+from element_selector import element_selector
 from properties import properties
 from dls_zone import dls_zone
 
 #global variables
-globalbackground = "#FFFFFF"
-borderthinkness = 5
+global_background = "#FFFFFF"
+border_thickness = 5
+border_color = "black"
 
 #creating the window
 window = Tk()
 window.geometry("1440x1024")
-window.configure(bg = globalbackground)
+window.configure(bg = global_background)
 window.title("UMLPlanter")
 
 #creating and configuring the canvas
-frame1 = element_selactor(window, globalbackground, borderthinkness)
-frame2 = properties(window, globalbackground, borderthinkness)
-canvas = canvas(window, globalbackground, borderthinkness)
-frame4 = dls_zone(window, globalbackground, borderthinkness)
+frame1 = element_selector(window, global_background, border_thickness, border_color)
+frame2 = properties(window, global_background, border_thickness, border_color)
+canvas = canvas(window, global_background, border_thickness, border_color)
+frame4 = dls_zone(window, global_background, border_thickness, border_color)
 
 #putting the canvas on the window
 frame1.place(x = 0, y = 0)
@@ -48,12 +49,12 @@ def place_arrow():
 
 #buttom 1
 image_1 = PhotoImage(file="gui/assets/image_1.png")
-b = Button(frame1, image=image_1, command=place_box, bg = globalbackground)
+b = Button(frame1, image=image_1, command=place_box, bg = global_background)
 b.place(x=40, y=30)
 
 #buttom 2
 image_2 = PhotoImage(file="gui/assets/image_2.png")
-b2 = Button(frame1, image=image_2, command=place_arrow, bg = globalbackground)
+b2 = Button(frame1, image=image_2, command=place_arrow, bg = global_background)
 b2.place(x=40, y=250)
 
 #cloes the application on escape

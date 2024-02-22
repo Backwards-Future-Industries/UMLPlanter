@@ -1,13 +1,14 @@
 from tkinter import Canvas
 
 class canvas(Canvas):
-    def __init__(self, window, globalbackground, borderthinkness):
+    def __init__(self, window, global_background, border_thickness, border_color):
         super().__init__(
             window,
-            bg = globalbackground,
+            bg = global_background,
             height = 1024,
             width = 740,
-            highlightthickness = borderthinkness,
+            highlightthickness = border_thickness,
+            highlightbackground = border_color,
             relief = "ridge",
         )
         self.place(x = 250, y = 0)
