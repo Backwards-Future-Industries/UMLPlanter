@@ -30,12 +30,12 @@ frame4.place(x = 990, y = 0)
 #creating a box on canvas
 def place_box():
     #creating the box
-    canvas.create_text(
-        10,
-        10,
-        text="Hello, world!",
+    canvas.create_rectangle(
+        100, 100, 200, 200,
+        fill = "white",
+        outline = "black",
+        width = 2,
         tags = "move")
-    
 
 #creating an arrow on canvas
 def place_arrow():
